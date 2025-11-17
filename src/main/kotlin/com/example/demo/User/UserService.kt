@@ -1,12 +1,12 @@
 package com.example.demo.domain.user
-
 // (수정) import하는 DTO 클래스명 변경
 import com.example.demo.domain.user.dto.UserRegisterRequestDto
 import com.example.demo.domain.user.dto.UserLoginRequestDto
 import com.example.demo.domain.user.dto.UserResponse
 import com.example.demo.domain.user.dto.UpdateProfileRequest
 import com.example.demo.domain.user.dto.ChangePasswordRequest
-import com.example.demo.domain.user.dto.LoginResponse // (추가)
+import com.example.demo.domain.user.dto.LoginResponse
+import com.example.demo.domain.user.User
 
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service

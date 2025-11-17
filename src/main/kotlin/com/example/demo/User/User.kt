@@ -1,5 +1,5 @@
 package com.example.demo.domain.user
-
+import com.example.demo.domain.pet.Pet
 import jakarta.persistence.*
 import java.time.LocalDateTime
 @Entity
@@ -18,7 +18,10 @@ class User(
     var nickname: String,
 
     @Column(length = 500)
-    var profileImage: String? = null
+    var profileImage: String? = null,
+
+    @OneToMany(mappedBy = "owner", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val pets: MutableList<Pet> = mutableListOf()
 ){
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,4 +1,4 @@
-package com.example.demo.domain.user
+package com.example.demo.domain.user.dto
 
 import com.example.demo.domain.user.User
 import com.example.demo.domain.user.UserRole
@@ -18,7 +18,7 @@ data class UserResponse(
     companion object {
         fun from(user: User): UserResponse {
             return UserResponse(
-                userId = user.userId,
+                userId = user.id,
                 loginId = user.loginId,
                 email = user.email,
                 nickname = user.nickname,
@@ -27,7 +27,7 @@ data class UserResponse(
                 // (추가) Member Entity의 Pet Entity 목록을 PetProfileDto 목록으로 변환
                 pets = user.pets.map { pet ->
                     PetProfileDto(
-                        petId = pet.petId,
+                        petId = pet.id,
                         name = pet.name,
                         size = pet.size
                     )

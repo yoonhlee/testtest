@@ -1,4 +1,4 @@
-package com.example.demo.domain.user
+package com.example.demo.domain.user.dto
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
@@ -16,7 +16,7 @@ data class UserRegisterRequestDto(
 
     @field:NotBlank(message = "비밀번호는 필수입니다")
     @field:Size(min = 8, max = 20, message = "비밀번호는 8자 이상 20자 이하여야 합니다")
-    val passwordRaw: String?, // (수정) password -> passwordRaw
+    val passwordRaw: String?,
 
     @field:NotBlank(message = "닉네임은 필수입니다")
     @field:Size(min = 2, max = 20, message = "닉네임은 2자 이상 20자 이하여야 합니다")
@@ -30,10 +30,10 @@ data class UserRegisterRequestDto(
  * 1. email -> loginId
  */
 data class UserLoginRequestDto(
-    @field:NotBlank(message = "아이디는 필수입니다")
+    @field:NotBlank(message = "아이디를 입력해주세요.")
     val loginId: String?,
 
-    @field:NotBlank(message = "비밀번호는 필수입니다")
+    @field:NotBlank(message = "비밀번호를 입력해주세요.")
     val passwordRaw: String? // (수정) password -> passwordRaw
 )
 
@@ -42,7 +42,7 @@ data class UserLoginRequestDto(
  * (이름만 UpdateProfileRequest -> MemberUpdateProfileRequest로 변경 권장)
  */
 data class UpdateProfileRequest(
-    @field:NotBlank(message = "닉네임은 필수입니다")
+    @field:NotBlank(message = "닉네임을 입력해주세요.")
     @field:Size(min = 2, max = 20, message = "닉네임은 2자 이상 20자 이하여야 합니다")
     val nickname: String?,
 
@@ -54,10 +54,10 @@ data class UpdateProfileRequest(
  * (이름만 ChangePasswordRequest -> MemberChangePasswordRequest로 변경 권장)
  */
 data class ChangePasswordRequest(
-    @field:NotBlank(message = "현재 비밀번호는 필수입니다")
+    @field:NotBlank(message = "현재 비밀번호를 입력해주세요.")
     val currentPassword: String?,
 
-    @field:NotBlank(message = "새 비밀번호는 필수입니다")
+    @field:NotBlank(message = "새 비밀번호를 입력해주세요.")
     @field:Size(min = 8, max = 20, message = "비밀번호는 8자 이상 20자 이하여야 합니다")
     val newPassword: String?
 )

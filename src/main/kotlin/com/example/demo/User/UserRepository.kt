@@ -1,5 +1,8 @@
 package com.example.demo.domain.user
 
+import com.example.demo.domain.user.User
+import org.springframework.data.jpa.repository.JpaRepository
+
 // "창고 관리자는 이런 '버튼'들을 갖고 있습니다" (인터페이스)
 interface UserRepository : JpaRepository<User, Long> {
 
@@ -11,4 +14,6 @@ interface UserRepository : JpaRepository<User, Long> {
 
         // (내가 수정을 제안했던) '로그인 ID'로 유저 찾기 버튼
         fun findByLoginId(loginId: String): User?
+
+        fun existsByLoginId(loginId: String): Boolean
 }
