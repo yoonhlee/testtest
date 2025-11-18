@@ -39,28 +39,18 @@ data class UserResponse(
     }
 }
 
-/**
- * (추가) MemberResponse에 포함될 Pet 정보 DTO
- */
 data class PetProfileDto(
     val petId: Long,
     val name: String,
     val size: String
 )
 
-/**
- * (유지) 로그인 성공 응답 DTO
- */
 data class LoginResponse(
     val accessToken: String,
     val refreshToken: String,
     val user: UserResponse // (수정) UserResponse -> MemberResponse
 )
 
-/**
- * (유지) 공통 API 응답 래퍼
- * (이 템플릿은 매우 훌륭합니다)
- */
 data class ApiResponse<T>(
     val success: Boolean,
     val message: String,

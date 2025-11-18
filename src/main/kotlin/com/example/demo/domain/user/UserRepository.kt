@@ -1,6 +1,5 @@
 package com.example.demo.domain.user
 
-import com.example.demo.domain.user.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 // "창고 관리자는 이런 '버튼'들을 갖고 있습니다" (인터페이스)

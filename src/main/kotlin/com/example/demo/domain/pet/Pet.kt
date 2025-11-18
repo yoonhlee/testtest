@@ -1,5 +1,3 @@
-//package com.example.demo.Pet
-
 package com.example.demo.domain.pet
 
 // 1. User 엔티티를 import 해야 합니다.

@@ -1,5 +1,4 @@
 package com.example.demo.domain.pet
-import com.example.demo.domain.pet.Pet
 import org.springframework.data.jpa.repository.JpaRepository
 
 // Pet 엔티티와 Long 타입의 ID를 사용하는 창고 관리자

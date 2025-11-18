@@ -1,33 +1,10 @@
 package com.example.demo.domain.pet.dto
 
-//package com.example.demo.domain.pet.dto
-
 import com.example.demo.domain.pet.Pet
 import com.example.demo.domain.pet.PetGender
 import java.time.LocalDate
 
-// 1. 📋 "펫 등록 주문서" (Create)
-data class PetCreateRequest(
-    val name: String,
-    val gender: PetGender,
-    val size: String,
-    val birthDate: LocalDate? = null,
-    val weight: Double? = null,
-    val specialNotes: String? = null
-)
-
-// 2. 📝 "펫 수정 주문서" (Update)
-data class PetUpdateRequest(
-    val name: String,
-    val gender: PetGender,
-    val size: String,
-    val birthDate: LocalDate? = null,
-    val weight: Double? = null,
-    val specialNotes: String? = null
-)
-
-// 3. 🍽️ "펫 상세정보 서빙 쟁반" (Response)
-// (UserDto의 PetProfileDto보다 더 자세한 정보)
+// 3. "펫 상세정보 서빙 쟁반" (Response)
 data class PetResponse(
     val petId: Long,
     val name: String,

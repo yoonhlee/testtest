@@ -6,7 +6,6 @@ import com.example.demo.domain.user.dto.UserResponse
 import com.example.demo.domain.user.dto.UpdateProfileRequest
 import com.example.demo.domain.user.dto.ChangePasswordRequest
 import com.example.demo.domain.user.dto.LoginResponse
-import com.example.demo.domain.user.User
 
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
