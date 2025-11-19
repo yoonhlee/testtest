@@ -1,1 +1,3 @@
-rootProject.name = "demo"
+rootProject.name = "SEproject"
+
+include("backend")
