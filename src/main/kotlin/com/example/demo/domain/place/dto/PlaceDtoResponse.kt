@@ -2,7 +2,7 @@ package com.example.demo.domain.place.dto
 
 import com.example.demo.domain.place.Place
 
-data class PlaceResponse(
+data class PlaceDtoResponse(
     val placeId: Long,
     val name: String,
     val address: String,
@@ -15,8 +15,8 @@ data class PlaceResponse(
     val photos: List<String>
 ) {
     companion object {
-        fun from(place: Place): PlaceResponse {
-            return PlaceResponse(
+        fun from(place: Place): PlaceDtoResponse {
+            return PlaceDtoResponse(
                 placeId = place.placeId,
                 name = place.name,
                 address = place.address,

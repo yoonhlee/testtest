@@ -16,7 +16,8 @@ class Place(
 
     var operationHours: String? = null, // 운영 시간 (예: "09:00 - 18:00")
 
-    var petPolicy: String? = null, // 반려동물 정책 (예: "대형견 가능")
+    @Column(nullable = false)
+    var petPolicy: String, // 반려동물 정책 (예: "대형견 가능")
 
     var latitude: Double? = null, // 위도 (지도 표시용)
 
@@ -45,7 +46,7 @@ class Place(
         protected set
 
     // 정보 수정 메서드
-    fun updateInfo(name: String, address: String, phone: String?, operationHours: String?, petPolicy: String?) {
+    fun updateInfo(name: String, address: String, phone: String?, operationHours: String?, petPolicy: String) {
         this.name = name
         this.address = address
         this.phone = phone

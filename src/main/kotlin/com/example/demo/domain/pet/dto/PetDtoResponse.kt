@@ -5,7 +5,7 @@ import com.example.demo.domain.pet.PetGender
 import java.time.LocalDate
 
 // 3. "펫 상세정보 서빙 쟁반" (Response)
-data class PetResponse(
+data class PetDtoResponse(
     val petId: Long,
     val name: String,
     val gender: PetGender,
@@ -18,8 +18,8 @@ data class PetResponse(
     companion object {
         // "플레이팅 지시서"
         // Pet 엔티티(원재료)를 PetResponse(서빙 쟁반)로 변환
-        fun from(pet: Pet): PetResponse {
-            return PetResponse(
+        fun from(pet: Pet): PetDtoResponse {
+            return PetDtoResponse(
                 petId = pet.id,
                 name = pet.name,
                 gender = pet.gender,
@@ -27,7 +27,7 @@ data class PetResponse(
                 birthDate = pet.birthDate,
                 weight = pet.weight,
                 specialNotes = pet.specialNotes,
-                ownerId = pet.owner.id
+                ownerId = pet.owner.userId
             )
         }
     }

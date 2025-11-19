@@ -25,7 +25,7 @@ class User(
 ){
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0
+    val userId: Long = 0
 
     @Column(nullable = false)
     var createdAt: LocalDateTime = LocalDateTime.now()
