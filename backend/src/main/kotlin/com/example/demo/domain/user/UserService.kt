@@ -8,7 +8,7 @@ import com.example.demo.domain.user.dto.UserResponse
 import com.example.demo.domain.user.dto.UpdateProfileRequest
 import com.example.demo.domain.user.dto.ChangePasswordRequest
 import com.example.demo.domain.user.dto.LoginResponse
-
+import com.example.demo.global.security.JwtTokenProvider
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class UserService(
     private val userRepository: UserRepository,
-    private val passwordEncoder: PasswordEncoder
-    // private val jwtTokenProvider: JwtTokenProvider // (추가 권장) 실제 토큰 발급용
+    private val passwordEncoder: PasswordEncoder,
+    private val jwtTokenProvider: JwtTokenProvider
 ) {
 
     @Transactional
@@ -58,14 +58,8 @@ class UserService(
             throw IllegalArgumentException("비밀번호가 일치하지 않습니다")
         }
 
-        // (추가) 실제 토큰 생성 로직
-        // val accessToken = jwtTokenProvider.createAccessToken(user.id, user.role)
-        // val refreshToken = jwtTokenProvider.createRefreshToken(user.id)
-
-        // (임시)
-        val accessToken = "dummy-access-token"
-        val refreshToken = "dummy-refresh-token"
-
+        val accessToken = jwtTokenProvider.createAccessToken(user.userId, user.role)
+        val refreshToken = "refresh-token-not-implemented-yet"
 
         return LoginResponse(
             accessToken = accessToken,

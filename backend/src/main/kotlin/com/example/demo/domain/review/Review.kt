@@ -2,6 +2,7 @@ package com.example.demo.domain.review
 
 import com.example.demo.domain.user.User
 import com.example.demo.domain.place.Place
+import com.example.demo.global.entity.BaseTimeEntity
 import jakarta.persistence.*
 import jakarta.validation.constraints.Size
 import java.time.LocalDateTime
@@ -24,7 +25,7 @@ class Review(
     @JoinColumn(name = "place_id", nullable = false)
     var place: Place // 리뷰 작성한 장소 (FK)
 
-) {
+): BaseTimeEntity() {
     @Id
     @Column(name = "review_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,19 +39,11 @@ class Review(
     @Column(name = "review_url")
     var photos: MutableList<String> = mutableListOf()
 
-    @Column(nullable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now()
-
-    @Column(nullable = false)
-    var updatedAt: LocalDateTime = LocalDateTime.now()
-        protected set
-
     // 정보 수정 메서드
     fun updateInfo(content: String, rating: Int, newPhoto: List<String>) {
         this.content = content
         this.rating = rating
         this.photos.clear()
         this.photos.addAll(newPhoto)
-        this.updatedAt = LocalDateTime.now()
     }
 }

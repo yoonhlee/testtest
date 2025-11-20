@@ -7,6 +7,7 @@ import com.example.demo.domain.user.dto.ApiResponse
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -19,7 +20,7 @@ class ReviewController(
     @PostMapping("/places/{placeId}/reviews")
     fun createReview(
         @PathVariable placeId: Long,
-        @RequestParam userId: Long, // (보안상 나중엔 토큰에서 추출해야 함)
+        @AuthenticationPrincipal userId: Long,
         @Valid @RequestBody request: ReviewCreateRequest
     ): ResponseEntity<ApiResponse<ReviewDtoResponse>> {
         val response = reviewService.createReview(userId, placeId, request)
@@ -31,7 +32,7 @@ class ReviewController(
     @PutMapping("/reviews/{reviewId}")
     fun updateReview(
         @PathVariable reviewId: Long,
-        @RequestParam userId: Long,
+        @AuthenticationPrincipal userId: Long,
         @Valid @RequestBody request: ReviewUpdateRequest
     ): ResponseEntity<ApiResponse<ReviewDtoResponse>> {
         val response = reviewService.updateReview(userId, reviewId, request)
@@ -42,8 +43,8 @@ class ReviewController(
     @DeleteMapping("/reviews/{reviewId}")
     fun deleteReview(
         @PathVariable reviewId: Long,
-        @RequestParam userId: Long
-    ): ResponseEntity<ApiResponse<Unit>> {
+        @AuthenticationPrincipal userId: Long
+        ): ResponseEntity<ApiResponse<Unit>> {
         reviewService.deleteReview(userId, reviewId)
         return ResponseEntity.ok(ApiResponse(success = true, message = "리뷰가 삭제되었습니다."))
     }

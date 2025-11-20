@@ -3,8 +3,8 @@ package com.example.demo.domain.place
 import com.example.demo.domain.place.model.DogSize
 import com.example.demo.domain.place.model.LocationType
 import com.example.demo.domain.place.model.PlaceCategory
+import com.example.demo.global.entity.BaseTimeEntity
 import jakarta.persistence.*
-import java.time.LocalDateTime
 
 @Entity
 @Table(name = "places")
@@ -42,7 +42,7 @@ class Place(
     var latitude: Double? = null,
     var longitude: Double? = null
 
-) {
+): BaseTimeEntity() {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val placeId: Long = 0
 
@@ -56,13 +56,6 @@ class Place(
     @CollectionTable(name = "place_photos", joinColumns = [JoinColumn(name = "place_id")])
     @Column(name = "photo_url")
     var photos: MutableList<String> = mutableListOf()
-
-    @Column(nullable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now()
-
-    @Column(nullable = false)
-    var updatedAt: LocalDateTime = LocalDateTime.now()
-        protected set
 
     // 정보 수정 편의 메서드
     fun updateInfo(
@@ -86,13 +79,11 @@ class Place(
         this.longitude = longitude
         this.photos.clear()
         this.photos.addAll(newPhotos)
-        this.updatedAt = LocalDateTime.now()
     }
 
     // 평점/리뷰수 갱신
     fun updateRatingInfo(newRating: Double, newReviewCount: Int) {
         this.avgRating = newRating
         this.reviewCount = newReviewCount
-        this.updatedAt = LocalDateTime.now()
     }
 }

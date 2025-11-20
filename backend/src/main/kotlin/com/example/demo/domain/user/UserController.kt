@@ -13,6 +13,7 @@ import com.example.demo.domain.user.dto.ApiResponse // (ApiResponse는 UserDtoRe
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -93,7 +94,7 @@ class UserController(
     // 프로필 업데이트
     @PutMapping("/{userId}/profile")
     fun updateProfile(
-        @PathVariable userId: Long,
+        @AuthenticationPrincipal userId: Long,
         @Valid @RequestBody request: UpdateProfileRequest
     ): ResponseEntity<ApiResponse<UserResponse>> {
         val user = userService.updateProfile(userId, request)
@@ -109,7 +110,7 @@ class UserController(
     // 비밀번호 변경
     @PutMapping("/{userId}/password")
     fun changePassword(
-        @PathVariable userId: Long,
+        @AuthenticationPrincipal userId: Long,
         @Valid @RequestBody request: ChangePasswordRequest
     ): ResponseEntity<ApiResponse<Unit>> {
         userService.changePassword(userId, request)
