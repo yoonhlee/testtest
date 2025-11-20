@@ -29,6 +29,7 @@ class SecurityConfig(
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) } // 세션 미사용
             .authorizeHttpRequests {
                 it.requestMatchers(
+                    "/",
                     "/api/users/signup", "/api/users/login",
                     "/api/users/find-id", "/api/users/reset-password",
                     "/api/images/**", // 이미지는 누구나 볼 수 있게
