@@ -11,7 +11,7 @@ export const mockPlaces = [
     reviewCount: 128,
     lat: 35.8364,
     lng: 128.7544,
-    address: "대구 경산시 대학로 280",
+    address: "경산시 대학로 280",
     phone: "053-810-1234",
     hours: "10:00 - 22:00",
     parking: true,
@@ -170,7 +170,7 @@ export const mockPets = [
   {
     id: 1,
     userId: 1,
-    name: "명명이",
+    name: "멍멍이",
     breed: "골든 리트리버",
     gender: "수컷",
     age: 3,
